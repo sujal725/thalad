@@ -1,0 +1,86 @@
+
+PS C:\Users\ACER\OneDrive\Desktop\dc_ese\Q9> python .\kv_store.py
+=== DISTRIBUTED KEY-VALUE STORE ===
+
+Initial state: All replicas empty
+
+
+============================================================
+SCENARIO 1: STRONG CONSISTENCY
+============================================================
+
+--- STRONG CONSISTENCY WRITE: user:1={'name': 'Alice', 'balance': 1000} ---
+[Replica 0] WRITE: user:1={'name': 'Alice', 'balance': 1000} (v1)
+[Replica 1] WRITE: user:1={'name': 'Alice', 'balance': 1000} (v1)
+[Replica 2] WRITE: user:1={'name': 'Alice', 'balance': 1000} (v1)
+✓ All replicas updated synchronously
+
+--- READING user:1 from all replicas ---
+[Replica 0] READ: user:1={'name': 'Alice', 'balance': 1000} (v1)
+[Replica 1] READ: user:1={'name': 'Alice', 'balance': 1000} (v1)
+[Replica 2] READ: user:1={'name': 'Alice', 'balance': 1000} (v1)
+
+Consistent across all replicas: True
+
+============================================================
+SCENARIO 2: EVENTUAL CONSISTENCY
+============================================================
+
+Step 1: Write to Replica 0
+
+--- EVENTUAL CONSISTENCY WRITE: user:2={'name': 'Bob', 'balance': 500} on Replica 0 ---
+[Replica 0] WRITE: user:2={'name': 'Bob', 'balance': 500} (v1)
+
+Step 2: Read IMMEDIATELY after write (before propagation)
+
+--- READING user:2 from all replicas ---
+[Replica 0] READ: user:2={'name': 'Bob', 'balance': 500} (v1)
+[Replica 1] READ: user:2=None (v0)
+[Replica 2] READ: user:2=None (v0)
+Consistent across all replicas: False
+⚠ Replicas are INCONSISTENT - eventual consistency in progress
+
+Step 3: Waiting for propagation (2 seconds)...
+[Replica 1] UPDATE received: user:2={'name': 'Bob', 'balance': 500} (v1)
+[Replica 2] UPDATE received: user:2={'name': 'Bob', 'balance': 500} (v1)
+
+Step 4: Read AFTER propagation
+
+--- READING user:2 from all replicas ---
+[Replica 0] READ: user:2={'name': 'Bob', 'balance': 500} (v1)
+[Replica 1] READ: user:2={'name': 'Bob', 'balance': 500} (v1)
+[Replica 2] READ: user:2={'name': 'Bob', 'balance': 500} (v1)
+Consistent across all replicas: True
+✓ Replicas are now CONSISTENT
+
+============================================================
+SCENARIO 3: CONCURRENT UPDATES
+============================================================
+
+Update 1: Write on Replica 0
+
+--- EVENTUAL CONSISTENCY WRITE: counter=100 on Replica 0 ---
+[Replica 0] WRITE: counter=100 (v1)
+
+Update 2: Write on Replica 1 (before replication)
+
+--- EVENTUAL CONSISTENCY WRITE: counter=200 on Replica 1 ---
+[Replica 1] WRITE: counter=200 (v1)
+
+Waiting for propagation...
+[Replica 1] IGNORED: counter (old v1, current v1)
+[Replica 2] UPDATE received: counter=100 (v1)
+[Replica 0] IGNORED: counter (old v1, current v1)
+[Replica 2] IGNORED: counter (old v1, current v1)
+
+Final state:
+  Replica 0: {'user:1': {'name': 'Alice', 'balance': 1000}, 'user:2': {'name': 'Bob', 'balance': 500}, 'counter': 100}
+  Replica 1: {'user:1': {'name': 'Alice', 'balance': 1000}, 'user:2': {'name': 'Bob', 'balance': 500}, 'counter': 200}
+  Replica 2: {'user:1': {'name': 'Alice', 'balance': 1000}, 'user:2': {'name': 'Bob', 'balance': 500}, 'counter': 100}
+
+=== SIMULATION COMPLETE ===
+
+KEY DIFFERENCES:
+• Strong Consistency: All reads return latest data, but slower
+• Eventual Consistency: Faster writes, but temporary inconsistency
+PS C:\Users\ACER\OneDrive\Desktop\dc_ese\Q9>

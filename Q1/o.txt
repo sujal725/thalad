@@ -1,0 +1,40 @@
+
+PS C:\Users\ACER\OneDrive\Desktop\dc_ese\Q1> python banking_system.py
+[Server 1] Started on port 5001
+[Server 2] Started on port 5002
+[Server 3] Started on port 5003
+
+=== INITIAL LEADER ELECTION ===
+[Server 1] Starting election initiated by 1
+[Server 1] ELECTED as LEADER
+[Server 2] Starting election initiated by 2
+[Server 3] Starting election initiated by 3
+[Server 3] ELECTED as LEADER
+[Server 2] ELECTED as LEADER
+
+=== PERFORMING TRANSACTIONS ===
+Transaction 1: ACC001 += 1000
+Transaction 2: ACC002 += 500
+
+=== SIMULATING LEADER CRASH ===
+Leader 1 is crashing...
+
+=== NEW LEADER ELECTED ===
+
+=== TRANSACTIONS AFTER RECOVERY ===
+Transaction: ACC001 += 500
+
+=== FINAL STATE ===
+
+Server 2:
+  Leader: True
+  Logical Clock: 5
+  Accounts: {}
+  Transactions: 0
+
+Server 3:
+  Leader: True
+  Logical Clock: 6
+  Accounts: {}
+  Transactions: 0
+
