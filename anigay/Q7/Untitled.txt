@@ -1,0 +1,56 @@
+
+PS C:\Users\ACER\OneDrive\Desktop\dc_ese\Q7> python .\bully_algorithm.py
+=== BULLY ELECTION ALGORITHM ===
+
+Creating nodes with priorities (higher ID = higher priority):
+  Node 1: Priority 1
+  Node 2: Priority 2
+  Node 3: Priority 3
+  Node 4: Priority 4
+  Node 5: Priority 5
+
+--- SCENARIO 1: Initial Election ---
+
+[Node 5] Starting BULLY ELECTION
+[Node 5] ELECTED as COORDINATOR
+[Node 5] Announcing leadership to all nodes
+[Node 1] Acknowledged Node 5 as coordinator
+[Node 2] Acknowledged Node 5 as coordinator
+[Node 3] Acknowledged Node 5 as coordinator
+[Node 4] Acknowledged Node 5 as coordinator
+
+Coordinator after election: 5
+
+--- SCENARIO 2: Coordinator Crash ---
+[Node 5] CRASHED
+
+--- SCENARIO 3: New Election After Crash ---
+
+[Node 3] Starting BULLY ELECTION
+[Node 3] Sending election messages to: [4]
+[Node 4] Received election from Node 3
+
+[Node 4] Starting BULLY ELECTION
+[Node 4] ELECTED as COORDINATOR
+[Node 4] Announcing leadership to all nodes
+[Node 1] Acknowledged Node 4 as coordinator
+[Node 2] Acknowledged Node 4 as coordinator
+[Node 3] Acknowledged Node 4 as coordinator
+
+New Coordinator: 4
+
+--- SCENARIO 4: Node Recovery ---
+[Node 5] RECOVERED
+
+[Node 5] Starting BULLY ELECTION
+[Node 5] ELECTED as COORDINATOR
+[Node 5] Announcing leadership to all nodes
+[Node 1] Acknowledged Node 5 as coordinator
+[Node 2] Acknowledged Node 5 as coordinator
+[Node 3] Acknowledged Node 5 as coordinator
+[Node 4] Acknowledged Node 5 as coordinator
+
+Final Coordinator: 4
+
+=== SIMULATION COMPLETE ===
+PS C:\Users\ACER\OneDrive\Desktop\dc_ese\Q7>

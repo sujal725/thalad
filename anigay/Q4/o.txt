@@ -1,0 +1,40 @@
+
+PS C:\Users\ACER\OneDrive\Desktop\dc_ese\Q4> python .\distributed_logging.py
+=== DISTRIBUTED LOGGING SYSTEM WITH LAMPORT CLOCKS ===
+
+Events occurring on distributed servers:
+
+[Server 1] Event logged: 'Database Query' | Lamport: 1
+[Server 2] Event logged: 'API Request Received' | Lamport: 1
+[Server 3] Event logged: 'File Read' | Lamport: 1
+[Server 1] Event logged: 'Cache Hit' | Lamport: 2
+[Server 2] Event logged: 'Auth Validation' | Lamport: 2
+[Server 3] Event logged: 'Data Processing' | Lamport: 2
+[Server 1] Event logged: 'Write Operation' | Lamport: 3
+[Server 2] Event logged: 'Response Sent' | Lamport: 3
+[Server 3] Event logged: 'Sync Complete' | Lamport: 3
+
+=== CENTRALIZED LOG VIEW ===
+
+Order  Server   Lamport    Raw Time                  Event
+--------------------------------------------------------------------------------
+1      1        1          2025-11-18 11:45:30.016   Database Query
+2      2        1          2025-11-18 11:45:30.218   API Request Received
+3      3        1          2025-11-18 11:45:30.318   File Read
+4      1        2          2025-11-18 11:45:30.517   Cache Hit
+5      2        2          2025-11-18 11:45:30.919   Auth Validation
+6      3        2          2025-11-18 11:45:31.119   Data Processing
+7      1        3          2025-11-18 11:45:31.518   Write Operation
+8      2        3          2025-11-18 11:45:32.120   Response Sent
+9      3        3          2025-11-18 11:45:32.619   Sync Complete
+
+=== ORDERING VERIFICATION ===
+✓ All events are ordered by Lamport clock
+✓ Tie-breaking by Server ID ensures deterministic ordering
+✓ Causal relationships are preserved
+
+=== SIMULATION COMPLETE ===
+PS C:\Users\ACER\OneDrive\Desktop\dc_ese\Q4>
+
+
+

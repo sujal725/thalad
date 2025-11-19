@@ -1,0 +1,36 @@
+
+PS C:\Users\ACER\OneDrive\Desktop\dc_ese\Q6> python .\vector_clocks.py
+=== VECTOR CLOCKS SIMULATION ===
+
+Distributed processes with Vector Clocks:
+
+[P0] Local: Read from disk | VC: [1, 0, 0]
+[P1] Local: Initialize | VC: [0, 1, 0]
+[P0] Send: Request data → P1 | VC: [2, 0, 0]
+[P1] Receive: Request from P0 | VC: [2, 2, 0]
+[P2] Local: Waiting for data | VC: [0, 0, 1]
+[P1] Send: Send data → P2 | VC: [2, 3, 0]
+[P2] Receive: Data from P1 | VC: [2, 3, 2]
+[P0] Local: Processing | VC: [3, 0, 0]
+[P2] Local: Data received | VC: [2, 3, 3]
+
+=== EVENT ORDERING BY VECTOR CLOCK ===
+
+Process    Event                          Vector Clock
+------------------------------------------------------------
+P2         Waiting for data               [0, 0, 1]
+P1         Initialize                     [0, 1, 0]
+P0         Read from disk                 [1, 0, 0]
+P0         Send: Request data             [2, 0, 0]
+P1         Receive: Request from P0       [2, 2, 0]
+P1         Send: Send data                [2, 3, 0]
+P2         Receive: Data from P1          [2, 3, 2]
+P2         Data received                  [2, 3, 3]
+P0         Processing                     [3, 0, 0]
+
+=== CAUSALITY ANALYSIS ===
+✓ Events ordered by vector clock values
+✓ Causal relationships preserved across processes
+✓ Concurrent events properly detected
+
+=== SIMULATION COMPLETE ===

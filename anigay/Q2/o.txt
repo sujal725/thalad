@@ -1,0 +1,33 @@
+
+PS C:\Users\ACER\OneDrive\Desktop\dc_ese\Q2> python .\rce_engine.py
+[RCE Server] Listening on localhost:6001
+
+=== RCE CLIENT REQUESTS ===
+
+1. Arithmetic Operations:
+[RCE Server] Client connected from ('127.0.0.1', 61663)
+[RCE Server] Processing request from ('127.0.0.1', 61663): arithmetic
+[RCE Server] Response sent to ('127.0.0.1', 61663)
+   15 + 25 = 40
+[RCE Server] Client connected from ('127.0.0.1', 61664)
+[RCE Server] Processing request from ('127.0.0.1', 61664): arithmetic
+[RCE Server] Response sent to ('127.0.0.1', 61664)
+   7 * 8 = 56
+
+2. Sorting Operations:
+[RCE Server] Client connected from ('127.0.0.1', 61665)
+[RCE Server] Processing request from ('127.0.0.1', 61665): sort
+   Sort [5,2,9,1,7] = [1, 2, 5, 7, 9]
+
+3. String Operations:
+[RCE Server] Response sent to ('127.0.0.1', 61665)
+[RCE Server] Client connected from ('127.0.0.1', 61666)
+[RCE Server] Processing request from ('127.0.0.1', 61666): string
+   Reverse 'HELLO' = OLLEH
+[RCE Server] Response sent to ('127.0.0.1', 61666)
+[RCE Server] Client connected from ('127.0.0.1', 61667)
+[RCE Server] Processing request from ('127.0.0.1', 61667): string
+[RCE Server] Response sent to ('127.0.0.1', 61667)
+   Uppercase 'python' = PYTHON
+
+=== TESTS COMPLETED ===

@@ -1,0 +1,24 @@
+n .\arithmetic_service.py
+[Arithmetic Server] Listening on localhost:7001
+
+=== DISTRIBUTED ARITHMETIC SERVICE ===
+
+Remote Invocations:
+[Server] Request from ('127.0.0.1', 54766): {'operation': 'add', 'operands': [10, 20]}
+[Server] Response sent: 30
+add(10, 20) = 30
+[Server] Request from ('127.0.0.1', 54767): {'operation': 'subtract', 'operands': [50, 15]}
+subtract(50, 15) = 35
+[Server] Response sent: 35
+[Server] Request from ('127.0.0.1', 54768): {'operation': 'multiply', 'operands': [7, 8]}
+[Server] Response sent: 56
+multiply(7, 8) = 56
+[Server] Request from ('127.0.0.1', 54769): {'operation': 'divide', 'operands': [100, 4]}
+[Server] Response sent: 25.0
+divide(100, 4) = 25.0
+
+=== MARSHALLING/UNMARSHALLING DEMO ===
+Request marshalled to JSON, transmitted, then unmarshalled on server
+Server computes result and marshals response back to client
+
+=== SIMULATION COMPLETE ===

@@ -1,0 +1,68 @@
+
+PS C:\Users\ACER\OneDrive\Desktop\dc_ese\Q10> python .\multithreaded_server.py
+[Server] Listening on localhost:8001
+[Server] Accepting connections...
+
+============================================================
+CLIENT REQUESTS
+============================================================
+
+[Server] Client #1 connected from ('127.0.0.1', 54881)
+[Thread-1] Started processing client ('127.0.0.1', 54881)
+[Thread-1] Processing: {'type': 'text_process', 'text': 'Hello from Client 1', 'operation': 'uppercase'}
+[Server] Client #2 connected from ('127.0.0.1', 54882)
+[Thread-2] Started processing client ('127.0.0.1', 54882)
+[Thread-2] Processing: {'type': 'text_process', 'text': 'Hello from Client 2', 'operation': 'uppercase'}
+[Thread-1] Response sent to ('127.0.0.1', 54881)
+[Client-1] Response: {'success': True, 'result': 'HELLO FROM CLIENT 1'}
+[Thread-1] Client disconnected
+[Server] Client #3 connected from ('127.0.0.1', 54883)
+[Thread-3] Started processing client ('127.0.0.1', 54883)
+[Thread-3] Processing: {'type': 'text_process', 'text': 'Hello from Client 3', 'operation': 'uppercase'}
+[Server] Client #4 connected from ('127.0.0.1', 54884)
+[Thread-4] Started processing client ('127.0.0.1', 54884)
+[Thread-4] Processing: {'type': 'compute', 'value': 6}
+[Thread-2] Response sent to ('127.0.0.1', 54882)
+[Client-2] Response: {'success': True, 'result': 'HELLO FROM CLIENT 2'}
+[Thread-2] Client disconnected
+[Thread-4] Response sent to ('127.0.0.1', 54884)
+[Client-1] Response: {'success': True, 'result': 36}
+[Thread-4] Client disconnected
+[Server] Client #5 connected from ('127.0.0.1', 54885)
+[Thread-5] Started processing client ('127.0.0.1', 54885)
+[Thread-5] Processing: {'type': 'compute', 'value': 7}
+[Thread-3] Response sent to ('127.0.0.1', 54883)
+[Client-3] Response: {'success': True, 'result': 'HELLO FROM CLIENT 3'}
+[Thread-3] Client disconnected
+[Server] Client #6 connected from ('127.0.0.1', 54886)
+[Thread-6] Started processing client ('127.0.0.1', 54886)
+[Thread-6] Processing: {'type': 'text_process', 'text': 'Processing concurrently', 'operation': 'reverse'}
+[Thread-5] Response sent to ('127.0.0.1', 54885)
+[Thread-5] Client disconnected
+[Client-2] Response: {'success': True, 'result': 49}
+[Server] Client #7 connected from ('127.0.0.1', 54887)
+[Thread-7] Started processing client ('127.0.0.1', 54887)
+[Thread-7] Processing: {'type': 'compute', 'value': 8}
+[Server] Client #8 connected from ('127.0.0.1', 54888)
+[Thread-8] Started processing client ('127.0.0.1', 54888)
+[Thread-8] Processing: {'type': 'text_process', 'text': 'Processing concurrently', 'operation': 'reverse'}
+[Thread-7] Response sent to ('127.0.0.1', 54887)
+[Client-3] Response: {'success': True, 'result': 64}
+[Thread-7] Client disconnected
+[Client-1] Response: {'success': True, 'result': 'yltnerrucnoc gnissecorP'}
+[Thread-6] Response sent to ('127.0.0.1', 54886)
+[Thread-6] Client disconnected
+[Server] Client #9 connected from ('127.0.0.1', 54889)
+[Thread-9] Started processing client ('127.0.0.1', 54889)
+[Thread-9] Processing: {'type': 'text_process', 'text': 'Processing concurrently', 'operation': 'reverse'}
+[Thread-8] Response sent to ('127.0.0.1', 54888)
+[Thread-8] Client disconnected
+[Client-2] Response: {'success': True, 'result': 'yltnerrucnoc gnissecorP'}
+[Thread-9] Response sent to ('127.0.0.1', 54889)
+[Client-3] Response: {'success': True, 'result': 'yltnerrucnoc gnissecorP'}
+[Thread-9] Client disconnected
+
+============================================================
+All clients processed independently by separate threads
+============================================================
+PS C:\Users\ACER\OneDrive\Desktop\dc_ese\Q10>

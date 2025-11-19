@@ -1,0 +1,35 @@
+
+PS C:\Users\ACER\OneDrive\Desktop\dc_ese\Q3> python .\api_key_manager.py
+=== API KEY MANAGEMENT SYSTEM ===
+
+1. Creating API keys...
+[Manager] Created key: a325957e-7bc3-4e
+[Manager] Created key: 3188e133-46a4-48
+[Manager] Created key: 3622caf4-f672-47
+
+2. Getting available keys...
+[Manager] Assigned key: a325957e-7bc3-4e (blocked)
+   Assigned: {'success': True, 'key': 'a325957e-7bc3-4e'}
+
+3. Current status:
+   a325957e-7bc3-4e: blocked=True, age=0s
+   3188e133-46a4-48: blocked=False, age=0s
+   3622caf4-f672-47: blocked=False, age=0s
+
+4. Sending keep-alive signals...
+[Manager] Keep-alive received for: a325957e-7bc3-4e
+[Manager] Keep-alive received for: 3188e133-46a4-48
+
+5. Unblocking key...
+[Manager] Unblocked key: a325957e-7bc3-4e
+
+6. Waiting for auto-expiry (this is simulated)...
+   (In production, keys expire after 5 minutes without keep-alive)
+
+7. Final status:
+   a325957e-7bc3-4e: blocked=False, age=0s
+   3188e133-46a4-48: blocked=False, age=0s
+   3622caf4-f672-47: blocked=False, age=0s
+
+=== SIMULATION COMPLETE ===
+PS C:\Users\ACER\OneDrive\Desktop\dc_ese\Q3>
